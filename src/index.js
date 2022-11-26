@@ -152,9 +152,9 @@ function actionPage() {
 
 
 // получение данных с сервера
-async function getData() {
+function getData() {
     const goodsWrapper = document.querySelector('.goods');
-    return fetch('../db/db.json')
+    return fetch('db/db.json')
         .then((response) => {
             if (response.ok) {
                 return response.json();
