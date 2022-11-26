@@ -14,7 +14,6 @@ function toogleChecbox() {
     })
     // end чекбокс 
 }
-
 function toggleCart() {
 
     // корзина 
@@ -36,10 +35,7 @@ function toggleCart() {
         document.body.style.overflow = '';
     })
     // end корзина 
-}
-
-// карточки товаров
-
+}// карточки товаров
 // ищем карточки в диве .goods ".card". 
 // перебираем через переменную 'card' 
 const cards = document.querySelectorAll('.goods .card'),
@@ -87,7 +83,6 @@ function addCart() {
 
     }
 }
-
 // фильтры 
 function actionPage() {
 
@@ -141,16 +136,6 @@ function actionPage() {
         })
     }
 };
-
-
-// innertext медленее работате
-// 2:10
-// https://glo-academy.org/pl/teach/control/lesson/view?id=85202905
-
-
-
-
-
 // получение данных с сервера
 function getData() {
     const goodsWrapper = document.querySelector('.goods');
@@ -167,11 +152,7 @@ function getData() {
         })
         .catch((err) => {
             goodsWrapper.innerHTML = '<div style="color: red; font-size: 30px" >Упс что-то пошло не так</div>'
-        });
-        // .then(data => renderCards(data)).catch(err => {
-        //     return data;
-        //     goodsWrapper.innerHTML = '<div style="color: red; font-size: 30px" >Упс что-то пошло не так</div>'
-        // })
+        });    
 }
 // выводим карточки товара
 function renderCards(data) {
@@ -193,30 +174,29 @@ function renderCards(data) {
 							<h5 class="card-title">${good.title}</h5>
 							<button class="btn btn-primary">В корзину</button>
 						</div>
-					</div>
-						
-`;
+					</div>`;
         goodsWrapper.appendChild(card)
     })
-}
-// ---end получение данных с сервера
+} // ---end получение данных с сервера
 
 // каталог 
 function renderCatalog() {
     const cards = document.querySelectorAll('.goods .card');
     const catalogList = document.querySelector('.catalog-list');
-    const catalogBtn = document.querySelector('.catalog-button');
     const catalogWrapper = document.querySelector('.catalog');
-    const category = new Set();
+    const catalogBtn = document.querySelector('.catalog-button');    
+    const categories = new Set();
+
     cards.forEach((card) => {
-        category.add(card.dataset.category);
+        categories.add(card.dataset.category);
     });
 
-    category.forEach((item) => {
+    categories.forEach((item) => {
         const li = document.createElement('li');
         li.textContent = item;
         catalogList.appendChild(li);
     });
+
     catalogBtn.addEventListener('click', (event) => {
         if(catalogWrapper.style.display) {
             catalogWrapper.style.display = '';
@@ -243,3 +223,15 @@ getData().then((data) => {
     actionPage();
     renderCatalog();
 });
+
+
+    // .then(data => renderCards(data)).catch(err => {
+        //     return data;
+        //     goodsWrapper.innerHTML = '<div style="color: red; font-size: 30px" >Упс что-то пошло не так</div>'
+        // })
+
+        
+// innertext медленее работате
+// 2:10
+// https://glo-academy.org/pl/teach/control/lesson/view?id=85202905
+
