@@ -207,9 +207,9 @@ function renderCatalog() {
     const catalogList = document.querySelector('.catalog-list');
     const catalogBtn = document.querySelector('.catalog-button');
     const catalogWrapper = document.querySelector('.catalog');
-    const catalog = new Set();
+    const category = new Set();
     cards.forEach((card) => {
-        catalog.add(card.dataset.category);
+        category.add(card.dataset.category);
     });
 
     category.forEach((item) => {
